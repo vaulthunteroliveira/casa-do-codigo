@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,12 +15,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.casadocodigo.userapi.user.dto.UserDTO;
+import com.casadocodigo.userapi.user.service.UserService;
 
 @RestController("/")
 public class UserController {
 	
 	public static List<UserDTO> usuarios = new ArrayList<>();
-	
+	private UserService userService;
+
+	@Autowired
+	public UserController(UserService userService) {
+		this.userService = userService;
+	}
+
 	@GetMapping
 	private String home() {
 		return "ednaldo pereira";
@@ -27,7 +35,7 @@ public class UserController {
 	
 	@GetMapping("/users")
 	public List<UserDTO> getUsers() {
-		return usuarios;
+		return userService.getAll();
 	}
 	
 	@GetMapping("/users/{cpf}")

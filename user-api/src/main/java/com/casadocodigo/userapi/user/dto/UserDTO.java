@@ -2,6 +2,8 @@ package com.casadocodigo.userapi.user.dto;
 
 import java.time.LocalDateTime;
 
+import com.casadocodigo.userapi.user.entity.User;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -25,4 +27,15 @@ public class UserDTO {
 	private String email;
 	private String telefone;
 	private LocalDateTime dataCadastro;
+	
+	public static  UserDTO  convert(User user) {
+		return UserDTO.builder()
+				.nome(user.getNome())
+				.cpf(user.getCpf())
+				.endereco(user.getEndereco())
+				.email(user.getEmail())
+				.telefone(user.getTelefone())
+				.dataCadastro(user.getDataCadastro())
+				.build();
+	}
 }
