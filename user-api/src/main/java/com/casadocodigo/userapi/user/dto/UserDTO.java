@@ -21,6 +21,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class UserDTO {
 
+	private Long id;
 	private String nome;
 	private String cpf;
 	private String endereco;
@@ -30,6 +31,7 @@ public class UserDTO {
 	
 	public static  UserDTO  convert(User user) {
 		return UserDTO.builder()
+				.id(user.getId())
 				.nome(user.getNome())
 				.cpf(user.getCpf())
 				.endereco(user.getEndereco())

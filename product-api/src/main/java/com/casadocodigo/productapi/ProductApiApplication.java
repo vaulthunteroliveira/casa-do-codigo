@@ -1,13 +1,13 @@
-package com.casadocodigo.userapi;
+package com.casadocodigo.productapi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UserApiApplication {
-	
+public class ProductApiApplication {
+
 	public static void main(String[] args) {
-		SpringApplication.run(UserApiApplication.class, args);
+		SpringApplication.run(ProductApiApplication.class, args);
 	}
 
 }
