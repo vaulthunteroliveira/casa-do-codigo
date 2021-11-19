@@ -1,14 +1,9 @@
 package com.casadocodigo.productapi.category.entity;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.casadocodigo.productapi.product.entity.Product;
-import com.casadocodigo.productapi.product.entity.Product.ProductBuilder;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,4 +28,8 @@ public class Category {
 	@GeneratedValue
 	private Long id;
 	private String nome;
+
+	public Category(Long id) {
+		this.id = id;
+	}
 }

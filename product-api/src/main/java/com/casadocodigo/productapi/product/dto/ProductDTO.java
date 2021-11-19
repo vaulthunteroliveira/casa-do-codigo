@@ -25,6 +25,7 @@ import lombok.ToString;
 @AllArgsConstructor
 public class ProductDTO {
 
+	private Long id;
 	@NotBlank
 	private String productIdentifier;
 	@NotBlank
@@ -36,8 +37,13 @@ public class ProductDTO {
 	@NotNull
 	private CategoryDTO categoryDTO;
 	
+//	@JsonIgnore
+//	@NotBlank
+//	private String teste;
+	
 	public static ProductDTO convert(Product product) {
 		return ProductDTO.builder()
+				.id(product.getId())
 				.nome(product.getNome())
 				.preco(product.getPreco())
 				.productIdentifier(product.getProductIdentifier())

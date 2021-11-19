@@ -2,6 +2,7 @@ package com.casadocodigo.productapi.product.entity;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -10,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.casadocodigo.productapi.category.entity.Category;
+import com.casadocodigo.productapi.product.dto.ProductDTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -33,6 +35,7 @@ public class Product {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@Column(unique = true)
 	private String productIdentifier;
 	private String nome;
 	private String descricao;
@@ -41,5 +44,16 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
+	
+	public static Product convert(ProductDTO productDTO) {
+		return Product.builder()
+				.productIdentifier(productDTO.getProductIdentifier())
+				.nome(productDTO.getNome())
+				.descricao(productDTO.getDescricao())
+				.preco(productDTO.getPreco())
+				.category(new Category(productDTO.getCategoryDTO().getId()))
+				.build();
+				
+	}
 	
 }
